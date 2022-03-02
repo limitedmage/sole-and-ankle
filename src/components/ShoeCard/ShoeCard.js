@@ -35,11 +35,8 @@ const ShoeCard = ({
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
-          {variant !== "default" && (
-            <Badge onSale={variant === "on-sale"}>
-              {variant === "on-sale" ? "Sale" : "Just Released!"}
-            </Badge>
-          )}
+          {variant === "on-sale" && <SaleBadge>Sale</SaleBadge>}
+          {variant === "new-release" && <NewBadge>Just Released!</NewBadge>}
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
@@ -69,14 +66,23 @@ const ImageWrapper = styled.div`
 
 const Badge = styled.span`
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 12px;
-  margin-right: -4px;
-  color: white;
-  background-color: ${(p) => (p.onSale ? COLORS.primary : COLORS.secondary)};
-  padding: 8px 12px;
+  top: 12px;
+  right: -4px;
+  color: ${COLORS.white};
+  height: 32px;
+  padding: 0 10px;
   border-radius: 2px;
+  font-size: ${14 / 18}rem;
+  line-height: 32px;
+  font-weight: ${WEIGHTS.bold};
+`;
+
+const SaleBadge = styled(Badge)`
+  background-color: ${COLORS.primary};
+`;
+
+const NewBadge = styled(Badge)`
+  background-color: ${COLORS.secondary};
 `;
 
 const Image = styled.img`
@@ -98,6 +104,7 @@ const Name = styled.h3`
 
 const Price = styled.span`
   ${(p) => p.onSale && `text-decoration: line-through;`}
+  ${(p) => p.onSale && `color: ${COLORS.gray[700]};`}
 `;
 
 const ColorInfo = styled.p`
