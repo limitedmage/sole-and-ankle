@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS } from '../../constants';
-import VisuallyHidden from '../VisuallyHidden';
-import Icon from '../Icon';
+import { COLORS } from "../../constants";
+import VisuallyHidden from "../VisuallyHidden";
+import Icon from "../Icon";
 
 const SearchInput = ({ label, ...delegated }) => {
   return (
@@ -37,7 +37,7 @@ const SearchIcon = styled(Icon)`
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 2px;
   margin: auto;
   width: 16px;
   height: 16px;
